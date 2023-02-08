@@ -9,8 +9,8 @@ def main():
     
     completed_process.wait()
 
-    print(completed_process.stdout)
     print(completed_process.stderr)
+    print(completed_process.stdout)
 
 
 if __name__ == "__main__":
