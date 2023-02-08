@@ -1,17 +1,13 @@
 import subprocess
 import sys
 
-
 def main():
     command = sys.argv[3]
     args = sys.argv[4:]
     completed_process = subprocess.run([command, *args], capture_output=True)
     
-    completed_process.wait()
-
-    print(completed_process.stderr.decode())
-    print(completed_process.stdout.decode())
-
+    sys.stdout.buffer.write(completed_process.stdout)
+    sys.stderr.buffer.write(completed_process.stderr)
 
 if __name__ == "__main__":
     main()
