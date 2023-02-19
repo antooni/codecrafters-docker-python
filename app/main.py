@@ -9,6 +9,7 @@ def main():
     args = sys.argv[4:]
 
     os.mkdir(PATH)
+    os.chdir(PATH)
     os.chroot(PATH)
 
     completed_process = subprocess.run([command, *args], capture_output=True)
