@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import os
+import shutil
 
 PATH = "/tmp/codecrafters/docker"
 
@@ -8,8 +9,14 @@ def main():
     command = sys.argv[3]
     args = sys.argv[4:]
 
-    os.mkdir(PATH)
-    os.chdir(PATH)
+    commandPath = os.path.dirname(command)
+    executableDest = os.path.join(PATH, commandPath[1:])
+    
+    if not os.path.exists(executableDest):
+        os.makedirs(executableDest)
+
+    shutil.copy(command, executableDest)
+
     os.chroot(PATH)
 
     completed_process = subprocess.run([command, *args], capture_output=True)
