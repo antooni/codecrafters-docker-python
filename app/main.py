@@ -16,6 +16,8 @@ def main():
         os.makedirs(executableDest)
 
     shutil.copy(command, executableDest)
+
+    os.makedirs(os.path.join(PATH, 'usr/bin'))
     shutil.copy('/usr/bin/unshare', os.path.join(PATH, 'usr/bin/unshare'))
 
     os.chroot(PATH)
