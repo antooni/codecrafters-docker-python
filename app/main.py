@@ -18,9 +18,6 @@ def main():
 
     shutil.copy(command, executableDest)
 
-    os.makedirs(os.path.join(PATH, 'usr/bin'))
-    shutil.copy('/usr/bin/unshare', os.path.join(PATH, 'usr/bin/unshare'))
-
     os.chroot(PATH)
     libc = ctypes.CDLL(None)
     CLONE_NEWPID = 0x20000000
