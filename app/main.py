@@ -18,6 +18,7 @@ def main():
     shutil.copy(command, executableDest)
 
     os.chroot(PATH)
+    os.fork()
 
     completed_process = subprocess.run([command, *args], capture_output=True)
     
