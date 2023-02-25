@@ -6,6 +6,7 @@ import shutil
 PATH = "/tmp/codecrafters/docker"
 
 def main():
+    subprocess.check_call(['unshare', '--pid'])
     command = sys.argv[3]
     args = sys.argv[4:]
 
