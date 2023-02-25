@@ -8,7 +8,7 @@ PATH = "/tmp/codecrafters/docker"
 def main():
     command = sys.argv[3]
     args = sys.argv[4:]
-    
+
 
     commandPath = os.path.dirname(command)
     executableDest = os.path.join(PATH, commandPath[1:])
@@ -20,7 +20,7 @@ def main():
 
     os.chroot(PATH)
 
-    completed_process = subprocess.run(['unshare', '--pid', command, *args], capture_output=True)
+    completed_process = subprocess.run(['/usr/bin/unshare', '--pid', command, *args], capture_output=True)
     
     sys.stdout.buffer.write(completed_process.stdout)
     sys.stderr.buffer.write(completed_process.stderr)
