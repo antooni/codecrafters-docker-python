@@ -9,7 +9,6 @@ def main():
     command = sys.argv[3]
     args = sys.argv[4:]
 
-
     commandPath = os.path.dirname(command)
     executableDest = os.path.join(PATH, commandPath[1:])
     
@@ -17,6 +16,7 @@ def main():
         os.makedirs(executableDest)
 
     shutil.copy(command, executableDest)
+    shutil.copy('/usr/bin/unshare', os.path.join(PATH, 'usr/bin/unshare'))
 
     os.chroot(PATH)
 
