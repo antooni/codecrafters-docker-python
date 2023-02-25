@@ -8,6 +8,7 @@ PATH = "/tmp/codecrafters/docker"
 def main():
     command = sys.argv[3]
     args = sys.argv[4:]
+    
 
     commandPath = os.path.dirname(command)
     executableDest = os.path.join(PATH, commandPath[1:])
