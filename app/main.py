@@ -6,7 +6,6 @@ import shutil
 PATH = "/tmp/codecrafters/docker"
 
 def main():
-    subprocess.check_call(['unshare', '--pid'])
     command = sys.argv[3]
     args = sys.argv[4:]
 
@@ -20,7 +19,7 @@ def main():
 
     os.chroot(PATH)
 
-    completed_process = subprocess.run([command, *args], capture_output=True)
+    completed_process = subprocess.run(['unshare', '--pid', command, *args], capture_output=True)
     
     sys.stdout.buffer.write(completed_process.stdout)
     sys.stderr.buffer.write(completed_process.stderr)
